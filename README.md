@@ -37,7 +37,7 @@ You can view my live portfolio at:
 ## 💼 Contact
 
 Feel free to reach out to me:
-- **Email**: [your-email@example.com](mailto:mirahnuf@gmail.com)
+- **Email**: [mirahnuf@gmail.com](mailto:mirahnuf@gmail.com)
 - **LinkedIn**: [Ahnuf Mir - LinkedIn](https://www.linkedin.com/in/ahnufmir)
 - **GitHub**: [Ahnuf Mir - GitHub](https://github.com/ahnufmir)
 
