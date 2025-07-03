@@ -3,34 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahnuf Mir | Professional Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Ahnuf Mir | Cybersecurity Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== CSS VARIABLES ===== */
         :root {
-            /* Colors */
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #818cf8;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --gray: #94a3b8;
-            --gray-dark: #334155;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-
+            /* Dark Theme Colors */
+            --background-dark: #0a0a0a;
+            --surface-dark: #121212;
+            --surface-light-dark: #1a1a1a;
+            --text-dark: #f0f0f0;
+            --text-secondary-dark: #a0a0a0;
+            --accent-orange: #FF6A00;
+            --accent-orange-light: #FF8C42;
+            --accent-orange-dark: #E05A00;
+            
+            /* Light Theme Colors */
+            --background-light: #f5f7fa;
+            --surface-light: #ffffff;
+            --surface-light-alt: #f0f2f5;
+            --text-light: #1a1a1a;
+            --text-secondary-light: #5a5a5a;
+            
+            /* Theme Variables */
+            --background: var(--background-dark);
+            --surface: var(--surface-dark);
+            --surface-alt: var(--surface-light-dark);
+            --text: var(--text-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --accent: var(--accent-orange);
+            --accent-light: var(--accent-orange-light);
+            --accent-dark: var(--accent-orange-dark);
+            
             /* Spacing */
             --spacing-xs: 0.25rem;
-            --spacing-sm: 0.5rem;
-            --spacing-md: 1rem;
-            --spacing-lg: 1.5rem;
-            --spacing-xl: 2rem;
-            --spacing-xxl: 3rem;
-
+            --spacing-sm: 0.75rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3.5rem;
+            --spacing-xxl: 5rem;
+            
             /* Typography */
-            --font-base: 'Inter', sans-serif;
+            --font-base: 'Plus Jakarta Sans', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             --text-sm: 0.875rem;
             --text-base: 1rem;
@@ -38,52 +54,33 @@
             --text-xl: 1.25rem;
             --text-2xl: 1.5rem;
             --text-3xl: 1.875rem;
-            --text-4xl: 2.25rem;
-            --text-5xl: 3rem;
-
+            --text-4xl: 2.5rem;
+            --text-5xl: 3.5rem;
+            
             /* Shadows */
             --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
             --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
-
+            
             /* Border radius */
             --rounded-sm: 0.25rem;
             --rounded: 0.5rem;
             --rounded-lg: 1rem;
             --rounded-full: 9999px;
-
+            
             /* Transitions */
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-            /* Blur effect */
-            --blur-bg: rgba(15, 23, 42, 0.85);
-            --blur-bg-light: rgba(248, 250, 252, 0.85);
         }
 
-        /* ===== DARK THEME ===== */
-        .dark-theme {
-            --bg: var(--dark);
-            --text: var(--light);
-            --text-secondary: var(--gray);
-            --surface: #1e293b;
-            --surface-light: #334155;
-            --card-bg: rgba(15, 23, 42, 0.6);
-            --card-border: rgba(148, 163, 184, 0.1);
-        }
-
-        /* ===== LIGHT THEME ===== */
         .light-theme {
-            --bg: var(--light);
-            --text: var(--dark);
-            --text-secondary: var(--gray-dark);
-            --surface: #e2e8f0;
-            --surface-light: #cbd5e1;
-            --card-bg: rgba(248, 250, 252, 0.6);
-            --card-border: rgba(15, 23, 42, 0.1);
+            --background: var(--background-light);
+            --surface: var(--surface-light);
+            --surface-alt: var(--surface-light-alt);
+            --text: var(--text-light);
+            --text-secondary: var(--text-secondary-light);
         }
 
-        /* ===== BASE STYLES ===== */
         *,
         *::before,
         *::after {
@@ -98,7 +95,7 @@
 
         body {
             font-family: var(--font-base);
-            background-color: var(--bg);
+            background-color: var(--background);
             color: var(--text);
             transition: var(--transition);
             line-height: 1.6;
@@ -114,7 +111,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, var(--primary) 0%, transparent 70%);
+            background: radial-gradient(circle at center, rgba(255, 106, 0, 0.1) 0%, transparent 70%);
             opacity: 0.05;
             z-index: -2;
             pointer-events: none;
@@ -125,43 +122,26 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: var(--spacing-md);
+            color: var(--text);
         }
 
-        h1 {
-            font-size: var(--text-5xl);
-        }
-
-        h2 {
-            font-size: var(--text-3xl);
-            position: relative;
-            display: inline-block;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: var(--rounded-full);
-        }
-
+        h1 { font-size: var(--text-5xl); }
+        h2 { font-size: var(--text-4xl); }
+        h3 { font-size: var(--text-2xl); }
+        
         p {
             margin-bottom: var(--spacing-md);
             color: var(--text-secondary);
         }
 
         a {
-            color: var(--primary);
+            color: var(--accent);
             text-decoration: none;
             transition: var(--transition);
         }
 
         a:hover {
-            color: var(--primary-light);
+            color: var(--accent-light);
         }
 
         img {
@@ -185,10 +165,30 @@
             text-align: center;
             margin-bottom: var(--spacing-xl);
         }
+        
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto var(--spacing-sm);
+        }
 
         .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            border-radius: var(--rounded-full);
+        }
+        
+        .section-title p {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0;
         }
 
         .btn {
@@ -196,12 +196,12 @@
             align-items: center;
             justify-content: center;
             gap: var(--spacing-sm);
-            padding: var(--spacing-sm) var(--spacing-lg);
-            background: var(--primary);
-            color: white;
+            padding: var(--spacing-md) var(--spacing-lg);
+            background: var(--accent);
+            color: #fff;
             border: none;
             border-radius: var(--rounded);
-            font-weight: 500;
+            font-weight: 600;
             font-size: var(--text-base);
             cursor: pointer;
             transition: var(--transition);
@@ -218,7 +218,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            background: linear-gradient(90deg, var(--accent-dark), var(--accent));
             z-index: -1;
             transition: var(--transition);
             opacity: 1;
@@ -231,7 +231,7 @@
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 10px 20px rgba(255, 106, 0, 0.3);
         }
 
         .btn:active {
@@ -240,17 +240,17 @@
 
         .btn-outline {
             background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
+            border: 2px solid var(--accent);
+            color: var(--accent);
         }
 
         .btn-outline::before {
-            background: var(--primary);
+            background: var(--accent);
             opacity: 0;
         }
 
         .btn-outline:hover {
-            color: white;
+            color: #fff;
         }
 
         .btn-outline:hover::before {
@@ -258,12 +258,10 @@
         }
 
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: var(--surface);
+            border: 1px solid rgba(255, 106, 0, 0.1);
             border-radius: var(--rounded-lg);
             padding: var(--spacing-lg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             transition: var(--transition);
             box-shadow: var(--shadow);
             position: relative;
@@ -272,7 +270,8 @@
 
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: 0 15px 30px rgba(255, 106, 0, 0.2);
+            border-color: rgba(255, 106, 0, 0.2);
         }
 
         .card::before {
@@ -282,7 +281,7 @@
             left: -1px;
             right: -1px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
             border-radius: var(--rounded-lg) var(--rounded-lg) 0 0;
         }
 
@@ -299,24 +298,8 @@
             grid-template-columns: repeat(3, 1fr);
         }
 
-        .flex {
-            display: flex;
-        }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
         .text-gradient {
-            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -333,20 +316,34 @@
             justify-content: center;
             width: 48px;
             height: 48px;
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
+            background: rgba(255, 106, 0, 0.1);
+            color: var(--accent);
             border-radius: var(--rounded);
             font-size: 1.5rem;
             transition: var(--transition);
         }
 
         .icon:hover {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
             transform: translateY(-3px);
         }
 
-        /* ===== HEADER & NAVIGATION ===== */
+        /* Glow Effect */
+        .glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 106, 0, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+            opacity: 1;
+            transition: transform 0.2s ease-out;
+        }
+
+        /* Header & Navigation */
         .header {
             position: fixed;
             top: 0;
@@ -355,18 +352,13 @@
             z-index: 100;
             padding: var(--spacing-md) 0;
             transition: var(--transition);
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
         }
 
-        .header.scrolled {
-            background: var(--blur-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: var(--spacing-sm) 0;
-            border-bottom: 1px solid var(--card-border);
-        }
-
-        .light-theme .header.scrolled {
-            background: var(--blur-bg-light);
+        .light-theme .header {
+            background: rgba(245, 247, 250, 0.8);
         }
 
         .nav {
@@ -377,12 +369,12 @@
 
         .logo {
             font-size: var(--text-xl);
-            font-weight: 700;
+            font-weight: 800;
             color: var(--text);
         }
 
         .logo span {
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .nav-links {
@@ -409,7 +401,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary);
+            background: var(--accent);
             transition: var(--transition);
         }
 
@@ -431,15 +423,15 @@
             width: 40px;
             height: 40px;
             border-radius: var(--rounded);
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--primary);
+            background: rgba(255, 106, 0, 0.1);
+            color: var(--accent);
             cursor: pointer;
             transition: var(--transition);
             border: none;
         }
 
         .theme-toggle:hover {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
         }
 
@@ -453,7 +445,7 @@
             z-index: 101;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -469,17 +461,14 @@
             z-index: 2;
             max-width: 800px;
         }
-
+        
         .hero-subtitle {
-            font-family: var(--font-mono);
-            color: var(--primary);
             margin-bottom: var(--spacing-md);
             display: block;
         }
 
         .hero-title {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            margin-bottom: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
             line-height: 1.1;
         }
 
@@ -487,6 +476,7 @@
             font-size: var(--text-xl);
             max-width: 600px;
             margin-bottom: var(--spacing-xl);
+            color: var(--text-secondary);
         }
 
         .hero-actions {
@@ -507,13 +497,21 @@
             z-index: 1;
         }
 
-        /* ===== ABOUT SECTION ===== */
+        /* About Section */
         .about-grid {
             grid-template-columns: 1fr 1fr;
             align-items: center;
             gap: var(--spacing-xl);
         }
-
+        
+        .about-content h3 {
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .about-content > p {
+            margin-bottom: var(--spacing-lg);
+        }
+        
         .about-image {
             border-radius: var(--rounded-lg);
             overflow: hidden;
@@ -528,7 +526,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, var(--primary), transparent);
+            background: linear-gradient(45deg, var(--accent), transparent);
             opacity: 0.2;
             z-index: 1;
         }
@@ -544,15 +542,11 @@
             transform: scale(1.05);
         }
 
-        .about-content h2 {
-            margin-bottom: var(--spacing-lg);
-        }
-
         .about-stats {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
         }
 
         .stat-card {
@@ -563,19 +557,27 @@
         .stat-number {
             font-size: var(--text-3xl);
             font-weight: 700;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: var(--spacing-sm);
         }
 
-        /* ===== SKILLS SECTION ===== */
+        /* Skills Section */
         .skills-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-lg);
+            gap: var(--spacing-xl);
+        }
+        
+        .skills-container .card > h3 {
+            margin-bottom: var(--spacing-lg);
         }
 
         .skill-category {
             margin-bottom: var(--spacing-lg);
+        }
+        
+        .skill-category:last-child {
+            margin-bottom: 0;
         }
 
         .skill-category h3 {
@@ -592,7 +594,7 @@
         }
 
         .skill-item {
-            background: var(--surface);
+            background: var(--surface-alt);
             padding: var(--spacing-sm) var(--spacing-md);
             border-radius: var(--rounded);
             font-size: var(--text-sm);
@@ -601,7 +603,7 @@
         }
 
         .skill-item:hover {
-            background: var(--primary);
+            background: var(--accent);
             color: white;
             transform: translateY(-3px);
         }
@@ -618,14 +620,14 @@
 
         .skill-progress {
             height: 8px;
-            background: var(--surface);
+            background: var(--surface-alt);
             border-radius: var(--rounded-full);
             overflow: hidden;
         }
 
         .skill-progress-bar {
             height: 100%;
-            background: var(--primary);
+            background: var(--accent);
             border-radius: var(--rounded-full);
             position: relative;
         }
@@ -646,7 +648,7 @@
             100% { transform: translateX(100%); }
         }
 
-        /* ===== PROJECTS SECTION ===== */
+        /* Projects Section */
         .projects-grid {
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         }
@@ -687,6 +689,7 @@
         .project-title {
             font-size: var(--text-xl);
             margin-bottom: var(--spacing-sm);
+            color: #fff;
         }
 
         .project-tags {
@@ -697,7 +700,7 @@
         }
 
         .project-tag {
-            background: rgba(99, 102, 241, 0.2);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
             padding: 2px 8px;
             border-radius: var(--rounded-full);
@@ -707,12 +710,14 @@
         .project-actions {
             display: flex;
             gap: var(--spacing-sm);
+            margin-top: var(--spacing-md);
         }
 
-        /* ===== CONTACT SECTION ===== */
+        /* Contact Section */
         .contact-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1.25fr;
             gap: var(--spacing-xl);
+            align-items: flex-start;
         }
 
         .contact-info {
@@ -724,6 +729,7 @@
         .contact-item {
             display: flex;
             gap: var(--spacing-md);
+            align-items: center;
         }
 
         .contact-icon {
@@ -737,21 +743,19 @@
         .form-control {
             width: 100%;
             padding: var(--spacing-md);
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
+            background: var(--surface);
+            border: 1px solid var(--surface-alt);
             border-radius: var(--rounded);
             color: var(--text);
             font-family: var(--font-base);
             font-size: var(--text-base);
             transition: var(--transition);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.2);
         }
 
         textarea.form-control {
@@ -759,14 +763,15 @@
             resize: vertical;
         }
 
-        /* ===== FOOTER ===== */
+        /* Footer */
         .footer {
             background: var(--surface);
             padding: var(--spacing-xl) 0;
-            border-top: 1px solid var(--card-border);
+            border-top: 1px solid var(--surface-alt);
         }
 
         .footer-grid {
+            display: grid;
             grid-template-columns: 2fr 1fr 1fr;
             gap: var(--spacing-xl);
         }
@@ -779,6 +784,7 @@
 
         .footer-description {
             margin-bottom: var(--spacing-md);
+            color: var(--text-secondary);
         }
 
         .social-links {
@@ -801,112 +807,19 @@
         }
 
         .footer-links a:hover {
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .copyright {
             text-align: center;
             padding-top: var(--spacing-xl);
             margin-top: var(--spacing-xl);
-            border-top: 1px solid var(--card-border);
+            border-top: 1px solid var(--surface-alt);
             color: var(--text-secondary);
             font-size: var(--text-sm);
         }
 
-        /* ===== CURSOR EFFECTS ===== */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary);
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            mix-blend-mode: difference;
-            z-index: 9999;
-            transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease;
-        }
-
-        .cursor-follower {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--primary);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-            opacity: 0.3;
-        }
-
-        .cursor.hover,
-        .cursor-follower.hover {
-            transform: translate(-50%, -50%) scale(1.5);
-        }
-
-        .cursor.click {
-            transform: translate(-50%, -50%) scale(0.8);
-        }
-
-        /* ===== MODAL ===== */
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-
-        .modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: var(--rounded-lg);
-            width: 90%;
-            max-width: 600px;
-            padding: var(--spacing-xl);
-            position: relative;
-            transform: translateY(20px);
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .modal.active .modal-content {
-            transform: translateY(0);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: var(--spacing-md);
-            right: var(--spacing-md);
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-close:hover {
-            color: var(--primary);
-        }
-
-        /* ===== ANIMATIONS ===== */
+        /* Animations */
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
@@ -916,32 +829,17 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fade-in {
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-
-        /* ===== RESPONSIVE DESIGN ===== */
+        /* Responsive Design */
         @media (max-width: 992px) {
             .hero-image {
                 display: none;
             }
-
+            
             .about-grid,
-            .contact-grid,
-            .footer-grid {
+            .contact-grid {
                 grid-template-columns: 1fr;
             }
-
+            
             .skills-container {
                 grid-template-columns: 1fr;
             }
@@ -952,39 +850,63 @@
             .grid-cols-3 {
                 grid-template-columns: 1fr;
             }
-
+            
             .nav-links {
                 position: fixed;
                 top: 0;
                 right: -100%;
                 width: 70%;
                 height: 100vh;
-                background: var(--card-bg);
+                background: var(--surface);
                 backdrop-filter: blur(10px);
                 -webkit-backdrop-filter: blur(10px);
                 flex-direction: column;
-                padding: var(--spacing-xxl) var(--spacing-lg);
+                align-items: center;
+                justify-content: center;
                 transition: var(--transition);
                 z-index: 100;
-                border-left: 1px solid var(--card-border);
+                border-left: 1px solid var(--surface-alt);
             }
-
+            
             .nav-links.active {
                 right: 0;
             }
-
+            
             .mobile-toggle {
                 display: block;
             }
-
+            
             .hero-actions {
                 flex-direction: column;
                 align-items: flex-start;
             }
-
+            
+            /* --- FOOTER MOBILE IMPROVEMENTS --- */
             .footer-grid {
                 grid-template-columns: 1fr;
-                gap: var(--spacing-xl);
+                gap: var(--spacing-lg); /* Reduced gap */
+                text-align: center;
+            }
+
+            .footer-links {
+                /* The block itself is centered, but... */
+                display: inline-block;
+                /* ...the text inside is left-aligned for readability. */
+                text-align: left;
+                margin-top: var(--spacing-md);
+            }
+
+            .footer-links h3 {
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+            
+            .copyright {
+                margin-top: var(--spacing-lg);
+                padding-top: var(--spacing-lg);
             }
         }
 
@@ -992,599 +914,506 @@
             .hero {
                 padding-top: var(--spacing-xxl);
             }
-
+            
             .hero-title {
                 font-size: var(--text-3xl);
             }
-
+            
             .hero-description {
                 font-size: var(--text-lg);
             }
-
+            
             .section {
                 padding: var(--spacing-xl) 0;
             }
-
+            
             .stat-card {
                 padding: var(--spacing-md);
             }
-
+            
             .stat-number {
                 font-size: var(--text-2xl);
             }
         }
     </style>
 </head>
-<body class="dark-theme">
-<!-- Custom Cursor -->
-<div class="cursor"></div>
-<div class="cursor-follower"></div>
 
-<!-- Header -->
-<header class="header">
-    <div class="container">
-        <nav class="nav">
-            <a href="#" class="logo">Ahnuf<span>.</span></a>
-
-            <div class="nav-links">
-                <a href="#home" class="nav-link active">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
-
-            <div class="nav-actions">
-                <button class="theme-toggle" id="theme-toggle">
-                    <i class='bx bx-moon'></i>
-                </button>
-                <button class="mobile-toggle" id="mobile-toggle">
-                    <i class='bx bx-menu'></i>
-                </button>
-            </div>
-        </nav>
-    </div>
-</header>
-
-<!-- Hero Section -->
-<section class="hero section" id="home">
-    <div class="container">
-        <div class="hero-content fade-in">
-            <span class="hero-subtitle mono">Hi there, I'm</span>
-            <h1 class="hero-title">Ahnuf <span class="text-gradient">Mir</span></h1>
-            <p class="hero-description">
-                A passionate <span class="text-gradient">Cyber Security Enthusiast</span> and <span class="text-gradient">Software Engineer</span>
-                dedicated to creating secure and innovative solutions that make a difference.
-            </p>
-            <div class="hero-actions">
-                <a href="#projects" class="btn">
-                    <i class='bx bx-code-alt'></i> View My Work
-                </a>
-                <a href="#contact" class="btn btn-outline">
-                    <i class='bx bx-chat'></i> Contact Me
-                </a>
-            </div>
+<body>
+    <div class="glow" id="glow"></div>
+    
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Ahnuf<span>Mir</span></a>
+                
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="nav-actions">
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="mobile-toggle" id="mobile-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
         </div>
-    </div>
-    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Developer" class="hero-image float">
-</section>
-
-<!-- About Section -->
-<section class="section" id="about">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2>About Me</h2>
-            <p>Get to know me better</p>
-        </div>
-
-        <div class="about-grid grid fade-in delay-1">
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1536104968055-4d61aa56f46a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ahnuf Mir">
-            </div>
-
-            <div class="about-content">
-                <h2>Cyber Security & Software Engineer</h2>
-                <p>
-                    I'm a tech enthusiast with a deep interest in cybersecurity and artificial intelligence,
-                    backed by a strong foundation in software engineering. I'm passionate about exploring
-                    the dynamic landscapes of modern tech.
+    </header>
+    
+    <section class="hero section" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle mono">Hi there, I'm</span>
+                <h1 class="hero-title">Ahnuf <span class="text-gradient">Mir</span></h1>
+                <p class="hero-description">
+                    A passionate <span class="text-gradient">Cyber Security Enthusiast</span> and <span class="text-gradient">Software Engineer</span> 
+                    dedicated to creating secure and innovative solutions that make a difference.
                 </p>
-                <p>
-                    With expertise in secure application development and vulnerability assessment,
-                    I build solutions that not only function flawlessly but also protect user data
-                    and privacy.
-                </p>
-
-                <div class="about-stats">
-                    <div class="stat-card card fade-in delay-2">
-                        <div class="stat-number">5+</div>
-                        <p>Years Experience</p>
-                    </div>
-                    <div class="stat-card card fade-in delay-3">
-                        <div class="stat-number">50+</div>
-                        <p>Projects Completed</p>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn">
+                        <i class="fas fa-code"></i> View My Work
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-comment"></i> Contact Me
+                    </a>
+                </div>
+            </div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Developer" class="hero-image float">
+    </section>
+    
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Get to know me better</p>
+            </div>
+            
+            <div class="about-grid grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1536104968055-4d61aa56f46a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ahnuf Mir">
+                </div>
+                
+                <div class="about-content">
+                    <h3>Cyber Security & Software Engineer</h3>
+                    <p>
+                        I'm a tech enthusiast with a deep interest in cybersecurity and artificial intelligence, 
+                        backed by a strong foundation in software engineering. I'm passionate about exploring 
+                        the dynamic landscapes of modern tech.
+                    </p>
+                    <p>
+                        With expertise in secure application development and vulnerability assessment, 
+                        I build solutions that not only function flawlessly but also protect user data 
+                        and privacy.
+                    </p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-card card">
+                            <div class="stat-number">5+</div>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="stat-number">50+</div>
+                            <p>Projects Completed</p>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="stat-number">10+</div>
+                            <p>Certifications</p>
+                        </div>
+                        <div class="stat-card card">
+                            <div class="stat-number">100%</div>
+                            <p>Dedicated</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Skills Section -->
-<section class="section" id="skills">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2>My Skills</h2>
-            <p>Technologies I work with</p>
-        </div>
-
-        <div class="skills-container grid fade-in">
-            <div class="card">
-                <h3>Technical Expertise</h3>
-
-                <div class="skill-category">
-                    <h3><i class='bx bx-code-alt'></i> Programming</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">Python</div>
-                        <div class="skill-item">JavaScript</div>
-                        <div class="skill-item">C++</div>
-                        <div class="skill-item">Java</div>
-                        <div class="skill-item">Go</div>
-                        <div class="skill-item">Rust</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class='bx bx-shield-quarter'></i> Security</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">Penetration Testing</div>
-                        <div class="skill-item">Cryptography</div>
-                        <div class="skill-item">Network Security</div>
-                        <div class="skill-item">OWASP Top 10</div>
-                        <div class="skill-item">Security Auditing</div>
-                    </div>
-                </div>
-
-                <div class="skill-category">
-                    <h3><i class='bx bx-data'></i> Databases</h3>
-                    <div class="skill-list">
-                        <div class="skill-item">PostgreSQL</div>
-                        <div class="skill-item">MySQL</div>
-                        <div class="skill-item">MongoDB</div>
-                        <div class="skill-item">Redis</div>
-                    </div>
-                </div>
+    </section>
+    
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+                <p>Technologies I work with</p>
             </div>
-
-            <div class="card">
-                <h3>Proficiency</h3>
-
-                <div class="skill-bar">
-                    <div class="skill-info">
-                        <span>Penetration Testing</span>
-                        <span>95%</span>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 95%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-info">
-                        <span>Secure Coding</span>
-                        <span>90%</span>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 90%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-info">
-                        <span>Network Security</span>
-                        <span>85%</span>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 85%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-info">
-                        <span>Cloud Security (AWS)</span>
-                        <span>80%</span>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 80%"></div>
-                    </div>
-                </div>
-
-                <div class="skill-bar">
-                    <div class="skill-info">
-                        <span>Incident Response</span>
-                        <span>75%</span>
-                    </div>
-                    <div class="skill-progress">
-                        <div class="skill-progress-bar" style="width: 75%"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Projects Section -->
-<section class="section" id="projects">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2>My Projects</h2>
-            <p>Some of my recent work</p>
-        </div>
-
-        <div class="projects-grid grid fade-in">
-            <div class="project-card card">
-                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
-                <div class="project-overlay">
-                    <h3 class="project-title">SecureAuth System</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">Security</span>
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Authentication</span>
-                    </div>
-                    <p>Multi-factor authentication system with biometric verification</p>
-                    <div class="project-actions">
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card card">
-                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
-                <div class="project-overlay">
-                    <h3 class="project-title">Network Monitor</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">Network</span>
-                        <span class="project-tag">Security</span>
-                        <span class="project-tag">Go</span>
-                    </div>
-                    <p>Real-time network traffic analyzer with threat detection</p>
-                    <div class="project-actions">
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card card">
-                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
-                <div class="project-overlay">
-                    <h3 class="project-title">Encrypted Messenger</h3>
-                    <div class="project-tags">
-                        <span class="project-tag">Encryption</span>
-                        <span class="project-tag">React</span>
-                        <span class="project-tag">Node.js</span>
-                    </div>
-                    <p>End-to-end encrypted messaging platform</p>
-                    <div class="project-actions">
-                        <button class="btn">View Details</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Contact Section -->
-<section class="section" id="contact">
-    <div class="container">
-        <div class="section-title fade-in">
-            <h2>Get In Touch</h2>
-            <p>Let's work together</p>
-        </div>
-
-        <div class="contact-grid grid fade-in">
-            <div class="contact-info">
+            
+            <div class="skills-container grid">
                 <div class="card">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class='bx bx-envelope icon'></i>
+                    <h3>Technical Expertise</h3>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Programming</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">Python</div>
+                            <div class="skill-item">JavaScript</div>
+                            <div class="skill-item">C++</div>
+                            <div class="skill-item">Java</div>
+                            <div class="skill-item">Go</div>
+                            <div class="skill-item">Rust</div>
                         </div>
-                        <div>
-                            <h3>Email</h3>
-                            <p>contact@ahnufmir.com</p>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">Penetration Testing</div>
+                            <div class="skill-item">Cryptography</div>
+                            <div class="skill-item">Network Security</div>
+                            <div class="skill-item">OWASP Top 10</div>
+                            <div class="skill-item">Security Auditing</div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> Databases</h3>
+                        <div class="skill-list">
+                            <div class="skill-item">PostgreSQL</div>
+                            <div class="skill-item">MySQL</div>
+                            <div class="skill-item">MongoDB</div>
+                            <div class="skill-item">Redis</div>
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="card">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class='bx bx-map icon'></i>
+                    <h3>Proficiency</h3>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Penetration Testing</span>
+                            <span>95%</span>
                         </div>
-                        <div>
-                            <h3>Location</h3>
-                            <p>San Francisco, California</p>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Secure Coding</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Network Security</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Cloud Security (AWS)</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-bar">
+                        <div class="skill-info">
+                            <span>Incident Response</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" style="width: 75%"></div>
                         </div>
                     </div>
                 </div>
-
-                <div class="card">
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class='bx bx-phone icon'></i>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+                <p>Some of my recent work</p>
+            </div>
+            
+            <div class="projects-grid grid">
+                <div class="project-card card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">SecureAuth System</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Security</span>
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Authentication</span>
                         </div>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+1 (555) 123-4567</p>
+                        <p>Multi-factor authentication system with biometric verification</p>
+                        <div class="project-actions">
+                            <a href="#" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card card">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Network Monitor</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Network</span>
+                            <span class="project-tag">Security</span>
+                            <span class="project-tag">Go</span>
+                        </div>
+                        <p>Real-time network traffic analyzer with threat detection</p>
+                        <div class="project-actions">
+                            <a href="#" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card card">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Encrypted Messenger</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Encryption</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                        </div>
+                        <p>End-to-end encrypted messaging platform</p>
+                        <div class="project-actions">
+                            <a href="#" class="btn">View Project</a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="contact-form card">
-                <form id="contact-form">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Subject" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
         </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid grid">
-            <div>
-                <div class="footer-logo">Ahnuf<span>.</span></div>
-                <p class="footer-description">
-                    Cyber Security Specialist and Software Engineer dedicated to building secure and innovative solutions.
-                </p>
-                <div class="social-links">
-                    <a href="#" class="icon"><i class='bx bxl-linkedin'></i></a>
-                    <a href="#" class="icon"><i class='bx bxl-github'></i></a>
-                    <a href="#" class="icon"><i class='bx bxl-twitter'></i></a>
-                    <a href="#" class="icon"><i class='bx bxl-dribbble'></i></a>
+    </section>
+    
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Let's work together</p>
+            </div>
+            
+            <div class="contact-grid grid">
+                <div class="contact-info">
+                    <div class="card">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope icon"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>contact@ahnufmir.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt icon"></i>
+                            </div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>San Francisco, California</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone icon"></i>
+                            </div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form card">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="Your Message" required rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
                 </div>
             </div>
-
-            <div class="footer-links">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid grid">
+                <div>
+                    <div class="footer-logo">Ahnuf<span>Mir</span></div>
+                    <p class="footer-description">
+                        Cyber Security Specialist and Software Engineer dedicated to building secure and innovative solutions.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="icon"><i class="fab fa-dribbble"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Security Auditing</a></li>
+                        <li><a href="#">Penetration Testing</a></li>
+                        <li><a href="#">Secure Development</a></li>
+                        <li><a href="#">Incident Response</a></li>
+                        <li><a href="#">Security Training</a></li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="footer-links">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="#">Security Auditing</a></li>
-                    <li><a href="#">Penetration Testing</a></li>
-                    <li><a href="#">Secure Development</a></li>
-                    <li><a href="#">Incident Response</a></li>
-                    <li><a href="#">Security Training</a></li>
-                </ul>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Ahnuf Mir. All rights reserved.</p>
             </div>
         </div>
-
-        <div class="copyright">
-            <p>&copy; 2023 Ahnuf Mir. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
-
-<!-- Modal -->
-<div class="modal" id="project-modal">
-    <div class="modal-content">
-        <button class="modal-close" id="modal-close"><i class='bx bx-x'></i></button>
-        <h2 id="modal-title">Project Title</h2>
-        <img src="" alt="Project" id="modal-image" class="about-image" style="margin-bottom: var(--spacing-md);">
-        <p id="modal-description">Project description goes here...</p>
-        <div class="project-actions" style="margin-top: var(--spacing-md);">
-            <a href="#" class="btn" id="modal-link" target="_blank">View Project</a>
-        </div>
-    </div>
-</div>
-
-<script>
-    // DOM Elements
-    const body = document.body;
-    const themeToggle = document.getElementById('theme-toggle');
-    const mobileToggle = document.getElementById('mobile-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinksAll = document.querySelectorAll('.nav-link');
-    const sections = document.querySelectorAll('section');
-    const contactForm = document.getElementById('contact-form');
-    const modal = document.getElementById('project-modal');
-    const modalClose = document.getElementById('modal-close');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    // Custom cursor elements
-    const cursor = document.querySelector('.cursor');
-    const cursorFollower = document.querySelector('.cursor-follower');
-
-    // Theme toggle
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('light-theme');
-        body.classList.toggle('dark-theme');
-
-        // Update icon based on theme
-        const icon = themeToggle.querySelector('i');
-        if (body.classList.contains('light-theme')) {
-            icon.classList.replace('bx-moon', 'bx-sun');
-            localStorage.setItem('theme', 'light');
-        } else {
-            icon.classList.replace('bx-sun', 'bx-moon');
-            localStorage.setItem('theme', 'dark');
-        }
-    });
-
-    // Mobile menu toggle
-    mobileToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('active');
-        mobileToggle.innerHTML = navLinks.classList.contains('active') ?
-            '<i class="bx bx-x"></i>' : '<i class="bx bx-menu"></i>';
-    });
-
-    // Close mobile menu when clicking a link
-    navLinksAll.forEach(link => {
-        link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            mobileToggle.innerHTML = '<i class="bx bx-menu"></i>';
+    </footer>
+    
+    <script>
+        // DOM Elements
+        const body = document.body;
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksAll = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+        const contactForm = document.getElementById('contact-form');
+        const glow = document.getElementById('glow');
+        
+        // Theme toggle
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            themeToggle.innerHTML = body.classList.contains('light-theme') ? 
+                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
         });
-    });
-
-    // Active nav link on scroll
-    window.addEventListener('scroll', () => {
-        // Header scroll effect
-        const header = document.querySelector('.header');
-        header.classList.toggle('scrolled', window.scrollY > 50);
-
-        // Active section highlighting
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-
-            if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                current = section.getAttribute('id');
-            }
+        
+        // Mobile menu toggle
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
-
+        
+        // Close mobile menu when clicking a link
         navLinksAll.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').substring(1) === current) {
-                link.classList.add('active');
-            }
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
         });
-    });
-
-    // Custom cursor
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-
-        setTimeout(() => {
-            cursorFollower.style.left = e.clientX + 'px';
-            cursorFollower.style.top = e.clientY + 'px';
-        }, 100);
-    });
-
-    // Cursor effects on interactive elements
-    const interactiveElements = [
-        ...document.querySelectorAll('a'),
-        ...document.querySelectorAll('button'),
-        ...document.querySelectorAll('.btn'),
-        ...document.querySelectorAll('.project-card'),
-        ...document.querySelectorAll('.icon'),
-        ...document.querySelectorAll('.skill-item')
-    ];
-
-    interactiveElements.forEach(element => {
-        element.addEventListener('mouseenter', () => {
-            cursor.classList.add('hover');
-            cursorFollower.classList.add('hover');
+        
+        // Active nav link on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinksAll.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Glow effect
+        document.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+        
+        // Form submission
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+        
+        // FADE-IN ANIMATION on SCROLL
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        // Add fade-in class to elements for observer to pick up
+        const fadeInElements = document.querySelectorAll('.hero-content, .section-title, .about-grid, .skills-container, .projects-grid, .contact-grid');
+        fadeInElements.forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
         });
 
-        element.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover');
-            cursorFollower.classList.remove('hover');
-        });
-
-        element.addEventListener('mousedown', () => {
-            cursor.classList.add('click');
-        });
-
-        element.addEventListener('mouseup', () => {
-            cursor.classList.remove('click');
-        });
-    });
-
-    // Project modal
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const title = card.querySelector('.project-title').textContent;
-            const description = card.querySelector('p').textContent;
-            const image = card.querySelector('.project-image').src;
-
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-description').textContent = description;
-            document.getElementById('modal-image').src = image;
-            document.getElementById('modal-link').href = "#";
-
-            modal.classList.add('active');
-            body.style.overflow = 'hidden';
-        });
-    });
-
-    // Close modal
-    modalClose.addEventListener('click', () => {
-        modal.classList.remove('active');
-        body.style.overflow = 'auto';
-    });
-
-    // Close modal when clicking outside
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-            body.style.overflow = 'auto';
+        // Inject the CSS for the animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
-    });
+        .fade-in.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        `;
+        document.head.appendChild(style);
 
-    // Form submission
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // In a real implementation, you would send the form data to a server
-        alert('Thank you for your message! I will get back to you soon.');
-        contactForm.reset();
-    });
-
-    // Check for saved theme preference
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        body.classList.add('light-theme');
-        themeToggle.querySelector('i').classList.replace('bx-moon', 'bx-sun');
-    }
-
-    // Initialize animations on scroll
-    const animateOnScroll = () => {
-        const elements = document.querySelectorAll('.fade-in');
-
-        elements.forEach(element => {
-            const elementPosition = element.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-
-            if (elementPosition < screenPosition) {
-                element.style.opacity = 1;
-            }
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.querySelector('.copyright p').innerHTML = 
+                `&copy; ${new Date().getFullYear()} Ahnuf Mir. All rights reserved.`;
         });
-    };
-
-    window.addEventListener('scroll', animateOnScroll);
-
-    // Initialize
-    document.addEventListener('DOMContentLoaded', () => {
-        // Initialize animations
-        animateOnScroll();
-
-        // Set current year in footer
-        document.querySelector('.copyright p').innerHTML =
-            `&copy; ${new Date().getFullYear()} Ahnuf Mir. All rights reserved.`;
-    });
-</script>
+    </script>
 </body>
 </html>
