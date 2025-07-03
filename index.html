@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
 <link rel="icon" type="image/png" href="assets\img\favicon.png">
-    <style>
+<style>
         :root {
             /* Dark Theme Colors */
             --background-dark: #0a0a0a;
@@ -469,18 +469,22 @@
             position: relative;
             z-index: 2;
             max-width: 800px;
-            text-align: center; /* Ensures all content, including subtitle, is centered */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
         }
         
         .hero-subtitle {
             margin-bottom: var(--spacing-md);
-            display: inline-block; /* Crucial change for centering */
+            display: inline-block;
             min-height: 24px; 
         }
 
         .hero-title {
             margin-bottom: var(--spacing-lg);
             line-height: 1.1;
+            text-align: center;
         }
 
         .hero-description {
@@ -490,6 +494,7 @@
             margin-right: auto;
             margin-bottom: var(--spacing-xl);
             color: var(--text-secondary);
+            text-align: center;
         }
 
         .hero-actions {
