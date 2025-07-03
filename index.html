@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahnuf Mir | Cybersecurity Portfolio</title>
+    <title>Ahnuf Mir | Cybersecurity & AI Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/devicon@2.15.1/devicon.min.css">
+
     <style>
         :root {
             /* Dark Theme Colors */
@@ -290,14 +292,6 @@
             gap: var(--spacing-lg);
         }
 
-        .grid-cols-2 {
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
         .text-gradient {
             background: linear-gradient(90deg, var(--accent), var(--accent-light));
             -webkit-background-clip: text;
@@ -544,7 +538,7 @@
 
         .about-stats {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--spacing-md);
             margin-top: var(--spacing-xl);
         }
@@ -554,99 +548,64 @@
             padding: var(--spacing-lg);
         }
 
-        .stat-number {
+        .stat-icon {
             font-size: var(--text-3xl);
-            font-weight: 700;
             color: var(--accent);
             margin-bottom: var(--spacing-sm);
         }
 
-        /* Skills Section */
-        .skills-container {
+        /* Skills Section - NEW DESIGN */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-xl);
-        }
-        
-        .skills-container .card > h3 {
-            margin-bottom: var(--spacing-lg);
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: var(--spacing-md);
         }
 
-        .skill-category {
-            margin-bottom: var(--spacing-lg);
-        }
-        
-        .skill-category:last-child {
-            margin-bottom: 0;
-        }
-
-        .skill-category h3 {
+        .skills-category-title {
+            grid-column: 1 / -1; /* Span full width */
             margin-bottom: var(--spacing-md);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .skills-category-title:first-child {
+            margin-top: 0;
         }
 
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-sm);
-        }
-
-        .skill-item {
-            background: var(--surface-alt);
-            padding: var(--spacing-sm) var(--spacing-md);
+        .skill-card {
+            background-color: var(--surface-alt);
             border-radius: var(--rounded);
-            font-size: var(--text-sm);
-            font-weight: 500;
+            padding: var(--spacing-lg) var(--spacing-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: var(--spacing-sm);
             transition: var(--transition);
         }
 
-        .skill-item:hover {
-            background: var(--accent);
+        .skill-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent);
             color: white;
-            transform: translateY(-3px);
         }
 
-        .skill-bar {
-            margin-bottom: var(--spacing-md);
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--accent);
+            transition: var(--transition);
         }
 
-        .skill-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: var(--spacing-xs);
+        .skill-card:hover i {
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .skill-card span {
+            font-weight: 600;
+            font-size: var(--text-sm);
         }
 
-        .skill-progress {
-            height: 8px;
-            background: var(--surface-alt);
-            border-radius: var(--rounded-full);
-            overflow: hidden;
-        }
-
-        .skill-progress-bar {
-            height: 100%;
-            background: var(--accent);
-            border-radius: var(--rounded-full);
-            position: relative;
-        }
-
-        .skill-progress-bar::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shine 2s infinite;
-        }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
 
         /* Projects Section */
         .projects-grid {
@@ -831,26 +790,11 @@
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .hero-image {
-                display: none;
-            }
-            
-            .about-grid,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .skills-container {
-                grid-template-columns: 1fr;
-            }
+            .hero-image { display: none; }
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
-            .grid-cols-2,
-            .grid-cols-3 {
-                grid-template-columns: 1fr;
-            }
-            
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -867,73 +811,33 @@
                 z-index: 100;
                 border-left: 1px solid var(--surface-alt);
             }
-            
-            .nav-links.active {
-                right: 0;
-            }
-            
-            .mobile-toggle {
-                display: block;
-            }
-            
-            .hero-actions {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            /* --- FOOTER MOBILE IMPROVEMENTS --- */
+            .nav-links.active { right: 0; }
+            .mobile-toggle { display: block; }
+            .hero-actions { flex-direction: column; align-items: flex-start; }
             .footer-grid {
                 grid-template-columns: 1fr;
-                gap: var(--spacing-lg); /* Reduced gap */
+                gap: var(--spacing-lg);
                 text-align: center;
             }
-
             .footer-links {
-                /* The block itself is centered, but... */
                 display: inline-block;
-                /* ...the text inside is left-aligned for readability. */
                 text-align: left;
                 margin-top: var(--spacing-md);
             }
-
-            .footer-links h3 {
-                margin-bottom: var(--spacing-sm);
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-            
-            .copyright {
-                margin-top: var(--spacing-lg);
-                padding-top: var(--spacing-lg);
-            }
+            .footer-links h3 { margin-bottom: var(--spacing-sm); }
+            .social-links { justify-content: center; }
+            .copyright { margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); }
         }
 
         @media (max-width: 576px) {
-            .hero {
-                padding-top: var(--spacing-xxl);
-            }
-            
-            .hero-title {
-                font-size: var(--text-3xl);
-            }
-            
-            .hero-description {
-                font-size: var(--text-lg);
-            }
-            
-            .section {
-                padding: var(--spacing-xl) 0;
-            }
-            
-            .stat-card {
-                padding: var(--spacing-md);
-            }
-            
-            .stat-number {
-                font-size: var(--text-2xl);
-            }
+            .hero { padding-top: var(--spacing-xxl); }
+            .hero-title { font-size: var(--text-3xl); }
+            .hero-description { font-size: var(--text-lg); }
+            .section { padding: var(--spacing-xl) 0; }
+            .stat-card, .about-stats { grid-template-columns: 1fr; }
+            .stat-card { padding: var(--spacing-md); }
+            .stat-number { font-size: var(--text-2xl); }
+            .about-stats { gap: var(--spacing-sm)}
         }
     </style>
 </head>
@@ -945,7 +849,6 @@
         <div class="container">
             <nav class="nav">
                 <a href="#" class="logo">Ahnuf<span>Mir</span></a>
-                
                 <div class="nav-links">
                     <a href="#home" class="nav-link active">Home</a>
                     <a href="#about" class="nav-link">About</a>
@@ -953,14 +856,9 @@
                     <a href="#projects" class="nav-link">Projects</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
-                
                 <div class="nav-actions">
-                    <button class="theme-toggle" id="theme-toggle">
-                        <i class="fas fa-moon"></i>
-                    </button>
-                    <button class="mobile-toggle" id="mobile-toggle">
-                        <i class="fas fa-bars"></i>
-                    </button>
+                    <button class="theme-toggle" id="theme-toggle"><i class="fas fa-moon"></i></button>
+                    <button class="mobile-toggle" id="mobile-toggle"><i class="fas fa-bars"></i></button>
                 </div>
             </nav>
         </div>
@@ -972,16 +870,11 @@
                 <span class="hero-subtitle mono">Hi there, I'm</span>
                 <h1 class="hero-title">Ahnuf <span class="text-gradient">Mir</span></h1>
                 <p class="hero-description">
-                    A passionate <span class="text-gradient">Cyber Security Enthusiast</span> and <span class="text-gradient">Software Engineer</span> 
-                    dedicated to creating secure and innovative solutions that make a difference.
+                    A passionate second-semester Software Engineering student at ITU, with a deep interest in <span class="text-gradient">Cybersecurity</span> and <span class="text-gradient">AI</span>.
                 </p>
                 <div class="hero-actions">
-                    <a href="#projects" class="btn">
-                        <i class="fas fa-code"></i> View My Work
-                    </a>
-                    <a href="#contact" class="btn btn-outline">
-                        <i class="fas fa-comment"></i> Contact Me
-                    </a>
+                    <a href="#projects" class="btn"><i class="fas fa-code"></i> View My Work</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-comment"></i> Contact Me</a>
                 </div>
             </div>
         </div>
@@ -992,7 +885,7 @@
         <div class="container">
             <div class="section-title">
                 <h2>About Me</h2>
-                <p>Get to know me better</p>
+                <p>Welcome to my profile! 👋</p>
             </div>
             
             <div class="about-grid grid">
@@ -1001,34 +894,22 @@
                 </div>
                 
                 <div class="about-content">
-                    <h3>Cyber Security & Software Engineer</h3>
-                    <p>
-                        I'm a tech enthusiast with a deep interest in cybersecurity and artificial intelligence, 
-                        backed by a strong foundation in software engineering. I'm passionate about exploring 
-                        the dynamic landscapes of modern tech.
-                    </p>
-                    <p>
-                        With expertise in secure application development and vulnerability assessment, 
-                        I build solutions that not only function flawlessly but also protect user data 
-                        and privacy.
-                    </p>
+                    <h3>I'm Ahnuf Mir, a tech geek...</h3>
+                    <p>As a second-semester Software Engineering student at ITU, I am passionate about exploring the dynamic fields of cybersecurity and artificial intelligence (AI). With a strong foundation in programming fundamentals, object-oriented programming (OOP), and software development, I am eager to apply my knowledge to real-world challenges and continue expanding my expertise.</p>
+                    <p>I am particularly interested in leveraging AI technologies to drive innovation in cybersecurity solutions, enhancing data security, threat detection, and network protection. Through my academic projects and self-driven learning, I am committed to advancing my understanding of these rapidly evolving fields.</p>
                     
                     <div class="about-stats">
                         <div class="stat-card card">
-                            <div class="stat-number">5+</div>
-                            <p>Years Experience</p>
+                            <i class="stat-icon fas fa-shield-alt"></i>
+                            <h4>Cybersecurity</h4>
                         </div>
                         <div class="stat-card card">
-                            <div class="stat-number">50+</div>
-                            <p>Projects Completed</p>
+                           <i class="stat-icon fas fa-robot"></i>
+                            <h4>Artificial Intelligence</h4>
                         </div>
                         <div class="stat-card card">
-                            <div class="stat-number">10+</div>
-                            <p>Certifications</p>
-                        </div>
-                        <div class="stat-card card">
-                            <div class="stat-number">100%</div>
-                            <p>Dedicated</p>
+                            <i class="stat-icon fas fa-laptop-code"></i>
+                            <h4>Software Engineering</h4>
                         </div>
                     </div>
                 </div>
@@ -1039,100 +920,28 @@
     <section class="section" id="skills">
         <div class="container">
             <div class="section-title">
-                <h2>My Skills</h2>
-                <p>Technologies I work with</p>
+                <h2>My Toolkit</h2>
+                <p>Technologies & Tools I Use</p>
             </div>
-            
-            <div class="skills-container grid">
-                <div class="card">
-                    <h3>Technical Expertise</h3>
-                    
-                    <div class="skill-category">
-                        <h3><i class="fas fa-code"></i> Programming</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">Python</div>
-                            <div class="skill-item">JavaScript</div>
-                            <div class="skill-item">C++</div>
-                            <div class="skill-item">Java</div>
-                            <div class="skill-item">Go</div>
-                            <div class="skill-item">Rust</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3><i class="fas fa-shield-alt"></i> Security</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">Penetration Testing</div>
-                            <div class="skill-item">Cryptography</div>
-                            <div class="skill-item">Network Security</div>
-                            <div class="skill-item">OWASP Top 10</div>
-                            <div class="skill-item">Security Auditing</div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-category">
-                        <h3><i class="fas fa-database"></i> Databases</h3>
-                        <div class="skill-list">
-                            <div class="skill-item">PostgreSQL</div>
-                            <div class="skill-item">MySQL</div>
-                            <div class="skill-item">MongoDB</div>
-                            <div class="skill-item">Redis</div>
-                        </div>
-                    </div>
+
+            <div class="card">
+                <h3 class="skills-category-title">Technical Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-card"><i class="devicon-cplusplus-plain"></i><span>C++</span></div>
+                    <div class="skill-card"><i class="devicon-python-plain"></i><span>Python</span></div>
+                    <div class="skill-card"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
+                    <div class="skill-card"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
+                    <div class="skill-card"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
+                    <div class="skill-card"><i class="devicon-php-plain"></i><span>PHP</span></div>
+                    <div class="skill-card"><i class="devicon-mysql-plain"></i><span>MySQL</span></div>
                 </div>
-                
-                <div class="card">
-                    <h3>Proficiency</h3>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>Penetration Testing</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>Secure Coding</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>Network Security</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>Cloud Security (AWS)</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>Incident Response</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="skill-progress">
-                            <div class="skill-progress-bar" style="width: 75%"></div>
-                        </div>
-                    </div>
+
+                <h3 class="skills-category-title">Design Tools</h3>
+                <div class="skills-grid">
+                    <div class="skill-card"><i class="devicon-photoshop-plain"></i><span>Photoshop</span></div>
+                    <div class="skill-card"><i class="devicon-illustrator-plain"></i><span>Illustrator</span></div>
+                    <div class="skill-card"><i class="devicon-aftereffects-plain"></i><span>After Effects</span></div>
+                    <div class="skill-card"><i class="devicon-lightroom-plain"></i><span>Lightroom</span></div>
                 </div>
             </div>
         </div>
@@ -1156,9 +965,7 @@
                             <span class="project-tag">Authentication</span>
                         </div>
                         <p>Multi-factor authentication system with biometric verification</p>
-                        <div class="project-actions">
-                            <a href="#" class="btn">View Project</a>
-                        </div>
+                        <div class="project-actions"><a href="#" class="btn">View Project</a></div>
                     </div>
                 </div>
                 
@@ -1172,9 +979,7 @@
                             <span class="project-tag">Go</span>
                         </div>
                         <p>Real-time network traffic analyzer with threat detection</p>
-                        <div class="project-actions">
-                            <a href="#" class="btn">View Project</a>
-                        </div>
+                        <div class="project-actions"><a href="#" class="btn">View Project</a></div>
                     </div>
                 </div>
                 
@@ -1188,9 +993,7 @@
                             <span class="project-tag">Node.js</span>
                         </div>
                         <p>End-to-end encrypted messaging platform</p>
-                        <div class="project-actions">
-                            <a href="#" class="btn">View Project</a>
-                        </div>
+                        <div class="project-actions"><a href="#" class="btn">View Project</a></div>
                     </div>
                 </div>
             </div>
@@ -1201,62 +1004,21 @@
         <div class="container">
             <div class="section-title">
                 <h2>Get In Touch</h2>
-                <p>Let's work together</p>
+                <p>Let's connect and explore how we can create secure, intelligent systems together!</p>
             </div>
             
             <div class="contact-grid grid">
                 <div class="contact-info">
-                    <div class="card">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope icon"></i>
-                            </div>
-                            <div>
-                                <h3>Email</h3>
-                                <p>contact@ahnufmir.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt icon"></i>
-                            </div>
-                            <div>
-                                <h3>Location</h3>
-                                <p>San Francisco, California</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone icon"></i>
-                            </div>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>+1 (555) 123-4567</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="card"><div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope icon"></i></div><div><h3>Email</h3><p>contact@ahnufmir.com</p></div></div></div>
+                    <div class="card"><div class="contact-item"><div class="contact-icon"><i class="fas fa-map-marker-alt icon"></i></div><div><h3>Location</h3><p>Lahore, Pakistan</p></div></div></div>
+                    <div class="card"><div class="contact-item"><div class="contact-icon"><i class="fas fa-phone icon"></i></div><div><h3>Phone</h3><p>+92 (300) 123-4567</p></div></div></div>
                 </div>
-                
                 <div class="contact-form card">
                     <form id="contact-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" placeholder="Your Message" required rows="5"></textarea>
-                        </div>
+                        <div class="form-group"><input type="text" class="form-control" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" class="form-control" placeholder="Your Email" required></div>
+                        <div class="form-group"><input type="text" class="form-control" placeholder="Subject" required></div>
+                        <div class="form-group"><textarea class="form-control" placeholder="Your Message" required rows="5"></textarea></div>
                         <button type="submit" class="btn">Send Message</button>
                     </form>
                 </div>
@@ -1269,9 +1031,7 @@
             <div class="footer-grid grid">
                 <div>
                     <div class="footer-logo">Ahnuf<span>Mir</span></div>
-                    <p class="footer-description">
-                        Cyber Security Specialist and Software Engineer dedicated to building secure and innovative solutions.
-                    </p>
+                    <p class="footer-description">Software Engineering student passionate about Cybersecurity and AI.</p>
                     <div class="social-links">
                         <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="icon"><i class="fab fa-github"></i></a>
@@ -1279,7 +1039,6 @@
                         <a href="#" class="icon"><i class="fab fa-dribbble"></i></a>
                     </div>
                 </div>
-                
                 <div class="footer-links">
                     <h3>Quick Links</h3>
                     <ul>
@@ -1290,22 +1049,18 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-links">
-                    <h3>Services</h3>
+                    <h3>Areas of Interest</h3>
                     <ul>
-                        <li><a href="#">Security Auditing</a></li>
+                        <li><a href="#">AI in Cybersecurity</a></li>
                         <li><a href="#">Penetration Testing</a></li>
                         <li><a href="#">Secure Development</a></li>
-                        <li><a href="#">Incident Response</a></li>
-                        <li><a href="#">Security Training</a></li>
+                        <li><a href="#">Threat Detection</a></li>
+                        <li><a href="#">Network Protection</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="copyright">
-                <p>&copy; 2025 Ahnuf Mir. All rights reserved.</p>
-            </div>
+            <div class="copyright"><p>&copy; 2025 Ahnuf Mir. All rights reserved.</p></div>
         </div>
     </footer>
     
@@ -1348,12 +1103,10 @@
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
-                
                 if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
                     current = section.getAttribute('id');
                 }
             });
-            
             navLinksAll.forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href').substring(1) === current) {
@@ -1382,18 +1135,14 @@
                     entry.target.classList.add('in-view');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, { threshold: 0.1 });
         
-        // Add fade-in class to elements for observer to pick up
-        const fadeInElements = document.querySelectorAll('.hero-content, .section-title, .about-grid, .skills-container, .projects-grid, .contact-grid');
+        const fadeInElements = document.querySelectorAll('.hero-content, .section-title, .about-grid, .skills-grid, .card, .contact-grid');
         fadeInElements.forEach(el => {
             el.classList.add('fade-in');
             observer.observe(el);
         });
 
-        // Inject the CSS for the animation
         const style = document.createElement('style');
         style.innerHTML = `
         .fade-in {
@@ -1404,13 +1153,11 @@
         .fade-in.in-view {
             opacity: 1;
             transform: translateY(0);
-        }
-        `;
+        }`;
         document.head.appendChild(style);
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
             document.querySelector('.copyright p').innerHTML = 
                 `&copy; ${new Date().getFullYear()} Ahnuf Mir. All rights reserved.`;
         });
