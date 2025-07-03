@@ -27,7 +27,9 @@
             --accent-orange-light: #FF8C42;
             --accent-orange-dark: #E05A00;
             --accent-transparent-dark: rgba(255, 106, 0, 0.1);
-            --overlay-bg-dark: linear-gradient(transparent, rgba(18, 18, 18, 0.95));
+            --header-bg-dark: rgba(10, 10, 10, 0.75);
+            --hero-shadow-dark: rgba(0, 0, 0, 0.3);
+            --glow-color-dark: rgba(255, 106, 0, 0.15);
             
             /* Light Theme Colors */
             --background-light: #f5f7fa;
@@ -37,9 +39,10 @@
             --text-secondary-light: #5a5a5a;
             --text-on-accent-light: #ffffff;
             --accent-transparent-light: rgba(255, 106, 0, 0.1);
-            --overlay-bg-light: linear-gradient(transparent, rgba(245, 247, 250, 0.95));
+            --header-bg-light: rgba(245, 247, 250, 0.75);
+            --hero-shadow-light: rgba(0, 0, 0, 0.1);
+            --glow-color-light: rgba(255, 106, 0, 0.1);
 
-            
             /* Theme Variables */
             --background: var(--background-dark);
             --surface: var(--surface-dark);
@@ -51,7 +54,9 @@
             --accent-light: var(--accent-orange-light);
             --accent-dark: var(--accent-orange-dark);
             --accent-transparent: var(--accent-transparent-dark);
-            --overlay-bg: var(--overlay-bg-dark);
+            --header-bg: var(--header-bg-dark);
+            --hero-shadow-color: var(--hero-shadow-dark);
+            --glow-color: var(--glow-color-dark);
             
             /* Spacing */
             --spacing-xs: 0.25rem;
@@ -89,7 +94,8 @@
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .light-theme {
+        /* THEME TOGGLE FIX: Class is now on the HTML element */
+        html.light-theme {
             --background: var(--background-light);
             --surface: var(--surface-light);
             --surface-alt: var(--surface-light-alt);
@@ -97,7 +103,9 @@
             --text-secondary: var(--text-secondary-light);
             --text-on-accent: var(--text-on-accent-light);
             --accent-transparent: var(--accent-transparent-light);
-            --overlay-bg: var(--overlay-bg-light);
+            --header-bg: var(--header-bg-light);
+            --hero-shadow-color: var(--hero-shadow-light);
+            --glow-color: var(--glow-color-light);
         }
 
         *,
@@ -279,7 +287,7 @@
 
         .card {
             background: var(--surface);
-            border: 1px solid rgba(255, 106, 0, 0.1);
+            border: 1px solid var(--accent-transparent);
             border-radius: var(--rounded-lg);
             padding: var(--spacing-lg);
             transition: var(--transition);
@@ -294,7 +302,7 @@
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 30px rgba(255, 106, 0, 0.2);
-            border-color: rgba(255, 106, 0, 0.2);
+            border-color: var(--accent);
         }
 
         .card::before {
@@ -350,12 +358,12 @@
             width: 400px;
             height: 400px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 106, 0, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
             pointer-events: none;
             z-index: -1;
             transform: translate(-50%, -50%);
             opacity: 1;
-            transition: transform 0.2s ease-out;
+            transition: transform 0.2s ease-out, background 0.3s ease;
         }
 
         /* Header & Navigation */
@@ -367,13 +375,9 @@
             z-index: 100;
             padding: var(--spacing-md) 0;
             transition: var(--transition);
-            background: rgba(10, 10, 10, 0.8);
+            background: var(--header-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-        }
-
-        .light-theme .header {
-            background: rgba(245, 247, 250, 0.8);
         }
 
         .nav {
@@ -509,7 +513,7 @@
             width: 40%;
             max-width: 500px;
             opacity: 0.8;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));
+            filter: drop-shadow(0 20px 30px var(--hero-shadow-color));
             z-index: 1;
         }
 
@@ -643,9 +647,22 @@
         .project-card {
             padding: 0;
             background: transparent;
-            border: none;
+            border: 1px solid transparent;
+            box-shadow: none;
+            border-radius: var(--rounded-lg);
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--accent);
         }
 
+        .project-card::before {
+            display: none;
+        }
+        
         .project-card .card-content {
             background-color: var(--surface);
             padding: var(--spacing-lg);
@@ -1101,7 +1118,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // DOM Elements
-            const body = document.body;
+            const htmlEl = document.documentElement; // THEME TOGGLE FIX: Target HTML element
             const themeToggle = document.getElementById('theme-toggle');
             const mobileToggle = document.getElementById('mobile-toggle');
             const navLinks = document.querySelector('.nav-links');
@@ -1114,16 +1131,16 @@
             // --- THEME TOGGLE (FIXED) ---
             const applyTheme = (theme) => {
                 if (theme === 'light') {
-                    body.classList.add('light-theme');
+                    htmlEl.classList.add('light-theme');
                     themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
                 } else {
-                    body.classList.remove('light-theme');
+                    htmlEl.classList.remove('light-theme');
                     themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
                 }
             };
 
             const toggleTheme = () => {
-                const newTheme = body.classList.contains('light-theme') ? 'dark' : 'light';
+                const newTheme = htmlEl.classList.contains('light-theme') ? 'dark' : 'light';
                 localStorage.setItem('theme', newTheme);
                 applyTheme(newTheme);
             };
@@ -1142,8 +1159,9 @@
                 applyTheme('light'); // Default theme
             }
 
-            // --- TYPING ANIMATION (NEW) ---
+            // --- TYPING ANIMATION ---
             const typeWriter = (element, text, speed = 100) => {
+                if (!element) return;
                 let i = 0;
                 element.innerHTML = "";
                 function type() {
