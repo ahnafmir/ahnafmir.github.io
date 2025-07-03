@@ -22,10 +22,12 @@
             --surface-light-dark: #1a1a1a;
             --text-dark: #f0f0f0;
             --text-secondary-dark: #a0a0a0;
+            --text-on-accent-dark: #ffffff;
             --accent-orange: #FF6A00;
             --accent-orange-light: #FF8C42;
             --accent-orange-dark: #E05A00;
             --accent-transparent-dark: rgba(255, 106, 0, 0.1);
+            --overlay-bg-dark: linear-gradient(transparent, rgba(18, 18, 18, 0.95));
             
             /* Light Theme Colors */
             --background-light: #f5f7fa;
@@ -33,7 +35,9 @@
             --surface-light-alt: #f0f2f5;
             --text-light: #1a1a1a;
             --text-secondary-light: #5a5a5a;
+            --text-on-accent-light: #ffffff;
             --accent-transparent-light: rgba(255, 106, 0, 0.1);
+            --overlay-bg-light: linear-gradient(transparent, rgba(245, 247, 250, 0.95));
 
             
             /* Theme Variables */
@@ -42,10 +46,12 @@
             --surface-alt: var(--surface-light-dark);
             --text: var(--text-dark);
             --text-secondary: var(--text-secondary-dark);
+            --text-on-accent: var(--text-on-accent-dark);
             --accent: var(--accent-orange);
             --accent-light: var(--accent-orange-light);
             --accent-dark: var(--accent-orange-dark);
             --accent-transparent: var(--accent-transparent-dark);
+            --overlay-bg: var(--overlay-bg-dark);
             
             /* Spacing */
             --spacing-xs: 0.25rem;
@@ -89,7 +95,9 @@
             --surface-alt: var(--surface-light-alt);
             --text: var(--text-light);
             --text-secondary: var(--text-secondary-light);
+            --text-on-accent: var(--text-on-accent-light);
             --accent-transparent: var(--accent-transparent-light);
+            --overlay-bg: var(--overlay-bg-light);
         }
 
         *,
@@ -102,13 +110,14 @@
 
         html {
             scroll-behavior: smooth;
+            background-color: var(--background);
+            transition: background-color 0.3s ease;
         }
 
         body {
             font-family: var(--font-base);
-            background-color: var(--background);
+            background-color: transparent;
             color: var(--text);
-            transition: var(--transition);
             line-height: 1.6;
             overflow-x: hidden;
             position: relative;
@@ -209,7 +218,7 @@
             gap: var(--spacing-sm);
             padding: var(--spacing-md) var(--spacing-lg);
             background: var(--accent);
-            color: #fff;
+            color: var(--text-on-accent);
             border: none;
             border-radius: var(--rounded);
             font-weight: 600;
@@ -261,7 +270,7 @@
         }
 
         .btn-outline:hover {
-            color: #fff;
+            color: var(--text-on-accent);
         }
 
         .btn-outline:hover::before {
@@ -322,7 +331,7 @@
             justify-content: center;
             width: 48px;
             height: 48px;
-            background: rgba(255, 106, 0, 0.1);
+            background: var(--accent-transparent);
             color: var(--accent);
             border-radius: var(--rounded);
             font-size: 1.5rem;
@@ -331,7 +340,7 @@
 
         .icon:hover {
             background: var(--accent);
-            color: white;
+            color: var(--text-on-accent);
             transform: translateY(-3px);
         }
 
@@ -429,7 +438,7 @@
             width: 40px;
             height: 40px;
             border-radius: var(--rounded);
-            background: rgba(255, 106, 0, 0.1);
+            background: var(--accent-transparent);
             color: var(--accent);
             cursor: pointer;
             transition: var(--transition);
@@ -438,7 +447,7 @@
 
         .theme-toggle:hover {
             background: var(--accent);
-            color: white;
+            color: var(--text-on-accent);
         }
 
         .mobile-toggle {
@@ -471,6 +480,7 @@
         .hero-subtitle {
             margin-bottom: var(--spacing-md);
             display: block;
+            min-height: 24px; 
         }
 
         .hero-title {
@@ -599,7 +609,10 @@
         .skill-card:hover {
             transform: translateY(-5px);
             background-color: var(--accent);
-            color: white;
+        }
+
+        .skill-card:hover span {
+             color: var(--text-on-accent);
         }
 
         .skill-card i {
@@ -609,13 +622,15 @@
         }
 
         .skill-card:hover i {
-            color: white;
+            color: var(--text-on-accent);
             transform: scale(1.1);
         }
         
         .skill-card span {
             font-weight: 600;
             font-size: var(--text-sm);
+            color: var(--text);
+            transition: color 0.3s ease;
         }
 
         /* Projects Section */
@@ -624,19 +639,36 @@
             gap: var(--spacing-lg);
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         }
-
-        .projects-grid .card p {
-            flex-grow: 1;
+        
+        .project-card {
+            padding: 0;
+            background: transparent;
+            border: none;
         }
 
-        .projects-grid .card .tags {
+        .project-card .card-content {
+            background-color: var(--surface);
+            padding: var(--spacing-lg);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+            border-radius: var(--rounded-lg);
+        }
+
+        .project-card p {
+            flex-grow: 1;
+            color: var(--text-secondary);
+        }
+
+        .project-card .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 0.5rem;
             margin-bottom: 1.5rem;
         }
 
-        .projects-grid .card .tag {
+        .project-card .tag {
             background: var(--accent-transparent);
             color: var(--accent);
             padding: 0.3rem 0.8rem;
@@ -648,13 +680,13 @@
             gap: 0.3rem;
         }
         
-        .projects-grid .card .links {
+        .project-card .links {
             display: flex;
             gap: 1rem;
-            margin-top: auto; /* Pushes links to the bottom */
+            margin-top: auto;
         }
 
-        .projects-grid .card .links a {
+        .project-card .links a {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -664,12 +696,12 @@
             transition: var(--transition);
         }
 
-        .projects-grid .card .links a:hover {
+        .project-card .links a:hover {
             color: var(--accent-light);
             transform: translateX(5px);
         }
         
-        .projects-grid .card h3 {
+        .project-card h3 {
              color: var(--accent);
              margin-bottom: var(--spacing-md);
         }
@@ -733,7 +765,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 3fr 1fr;
             gap: var(--spacing-xl);
         }
 
@@ -816,6 +848,7 @@
             .nav-links.active { right: 0; }
             .mobile-toggle { display: block; }
             .hero-actions { flex-direction: column; align-items: flex-start; }
+            
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: var(--spacing-lg);
@@ -868,7 +901,7 @@
     <section class="hero section" id="home">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-subtitle mono">Hi there, I'm</span>
+                <span class="hero-subtitle mono" id="hero-subtitle-typed"></span>
                 <h1 class="hero-title">Ahnuf <span class="text-gradient">Mir</span></h1>
                 <p class="hero-description">
                     A passionate second-semester Software Engineering student at ITU, with a deep interest in <span class="text-gradient">Cybersecurity</span> and <span class="text-gradient">AI</span>.
@@ -942,7 +975,6 @@
                     <div class="skill-card"><i class="devicon-photoshop-plain"></i><span>Photoshop</span></div>
                     <div class="skill-card"><i class="devicon-illustrator-plain"></i><span>Illustrator</span></div>
                     <div class="skill-card"><i class="devicon-aftereffects-plain"></i><span>After Effects</span></div>
-                    <div class="skill-card"><i class="devicon-lightroom-plain"></i><span>Lightroom</span></div>
                 </div>
             </div>
         </div>
@@ -956,49 +988,57 @@
             </div>
             
             <div class="projects-grid">
-                <div class="card">
-                    <h3>Gym Management System</h3>
-                    <div class="tags">
-                        <span class="tag"><i class="fab fa-html5"></i> HTML</span>
-                        <span class="tag"><i class="fab fa-css3-alt"></i> CSS</span>
-                        <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
-                        <span class="tag"><i class="fas fa-database"></i> MySQL</span>
+                <div class="card project-card">
+                    <div class="card-content">
+                        <h3>Gym Management System</h3>
+                        <div class="tags">
+                            <span class="tag"><i class="fab fa-html5"></i> HTML</span>
+                            <span class="tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                            <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                            <span class="tag"><i class="fas fa-database"></i> MySQL</span>
+                        </div>
+                        <p>A dynamic web application for managing gym operations. It features member registration, class scheduling, and attendance tracking, all connected to a MySQL database for persistent data storage.</p>
+                        <div class="links"><a href="https://github.com/hvssanraza/Gym-Management-System--MYSQL-Connected-" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                     </div>
-                    <p>A dynamic web application for managing gym operations. It features member registration, class scheduling, and attendance tracking, all connected to a MySQL database for persistent data storage.</p>
-                    <div class="links"><a href="https://github.com/hvssanraza/Gym-Management-System--MYSQL-Connected-" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                 </div>
 
-                <div class="card">
-                    <h3>Console-Based Gaming Suite</h3>
-                    <div class="tags">
-                        <span class="tag"><i class="fas fa-code"></i> C++</span>
-                        <span class="tag"><i class="fas fa-object-group"></i> OOP</span>
-                        <span class="tag"><i class="fas fa-file-export"></i> File I/O</span>
+                <div class="card project-card">
+                     <div class="card-content">
+                        <h3>Console-Based Gaming Suite</h3>
+                        <div class="tags">
+                            <span class="tag"><i class="fas fa-code"></i> C++</span>
+                            <span class="tag"><i class="fas fa-object-group"></i> OOP</span>
+                            <span class="tag"><i class="fas fa-file-export"></i> File I/O</span>
+                        </div>
+                        <p>A comprehensive collection of classic games in C++. Features a secure user account system with persistent data storage, demonstrating strong command over OOP and efficient file handling.</p>
+                        <div class="links"><a href="https://github.com/hvssanraza/Console-Based-Gaming-Suite" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                     </div>
-                    <p>A comprehensive collection of classic games in C++. Features a secure user account system with persistent data storage, demonstrating strong command over OOP and efficient file handling.</p>
-                    <div class="links"><a href="https://github.com/hvssanraza/Console-Based-Gaming-Suite" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                 </div>
 
-                <div class="card">
-                    <h3>E-Commerce Store Simulation</h3>
-                    <div class="tags">
-                        <span class="tag"><i class="fas fa-code"></i> C++</span>
-                        <span class="tag"><i class="fas fa-layer-group"></i> Data Structures</span>
-                        <span class="tag"><i class="fas fa-boxes"></i> Inventory Mngmt</span>
+                <div class="card project-card">
+                     <div class="card-content">
+                        <h3>E-Commerce Store Simulation</h3>
+                        <div class="tags">
+                            <span class="tag"><i class="fas fa-code"></i> C++</span>
+                            <span class="tag"><i class="fas fa-layer-group"></i> Data Structures</span>
+                            <span class="tag"><i class="fas fa-boxes"></i> Inventory Mngmt</span>
+                        </div>
+                        <p>A complete e-commerce platform simulation with customer and admin roles. Includes product management, shopping cart, order processing, and robust data persistence for a fluid user experience.</p>
+                        <div class="links"><a href="https://github.com/hvssanraza/ECommerceStore" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                     </div>
-                    <p>A complete e-commerce platform simulation with customer and admin roles. Includes product management, shopping cart, order processing, and robust data persistence for a fluid user experience.</p>
-                    <div class="links"><a href="https://github.com/hvssanraza/ECommerceStore" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                 </div>
 
-                <div class="card">
-                    <h3>My Personal Portfolio</h3>
-                    <div class="tags">
-                        <span class="tag"><i class="fab fa-html5"></i> HTML5</span>
-                        <span class="tag"><i class="fab fa-css3-alt"></i> CSS3</span>
-                        <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                <div class="card project-card">
+                     <div class="card-content">
+                        <h3>My Personal Portfolio</h3>
+                        <div class="tags">
+                            <span class="tag"><i class="fab fa-html5"></i> HTML5</span>
+                            <span class="tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                            <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                        </div>
+                        <p>The site you are on right now. A fully responsive website built with semantic HTML, modern CSS, and vanilla JavaScript to showcase my skills and projects.</p>
+                        <div class="links"><a href="https://github.com/ahnufmir/portfolio" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                     </div>
-                    <p>The site you are on right now. A fully responsive website built with semantic HTML, modern CSS, and vanilla JavaScript to showcase my skills and projects.</p>
-                    <div class="links"><a href="https://github.com/ahnufmir/portfolio" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                 </div>
             </div>
         </div>
@@ -1037,10 +1077,10 @@
                     <div class="footer-logo">Ahnuf<span>Mir</span></div>
                     <p class="footer-description">Software Engineering student passionate about Cybersecurity and AI.</p>
                     <div class="social-links">
-                        <a href="#" class="icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="icon"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" class="icon" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="icon" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1053,117 +1093,152 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
-                    <h3>Areas of Interest</h3>
-                    <ul>
-                        <li><a href="#">AI in Cybersecurity</a></li>
-                        <li><a href="#">Penetration Testing</a></li>
-                        <li><a href="#">Secure Development</a></li>
-                        <li><a href="#">Threat Detection</a></li>
-                        <li><a href="#">Network Protection</a></li>
-                    </ul>
-                </div>
             </div>
             <div class="copyright"><p>&copy; 2025 Ahnuf Mir. All rights reserved.</p></div>
         </div>
     </footer>
     
     <script>
-        // DOM Elements
-        const body = document.body;
-        const themeToggle = document.getElementById('theme-toggle');
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        const navLinksAll = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section');
-        const contactForm = document.getElementById('contact-form');
-        const glow = document.getElementById('glow');
-        
-        // Theme toggle
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-theme');
-            themeToggle.innerHTML = body.classList.contains('light-theme') ? 
-                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        });
-        
-        // Mobile menu toggle
-        mobileToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-            mobileToggle.innerHTML = navLinks.classList.contains('active') ? 
-                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        });
-        
-        // Close mobile menu when clicking a link
-        navLinksAll.forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-        
-        // Active nav link on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinksAll.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Glow effect
-        document.addEventListener('mousemove', (e) => {
-            glow.style.left = e.clientX + 'px';
-            glow.style.top = e.clientY + 'px';
-        });
-        
-        // Form submission
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            contactForm.reset();
-        });
-        
-        // FADE-IN ANIMATION on SCROLL
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        const fadeInElements = document.querySelectorAll('.hero-content, .section-title, .about-grid, .skills-grid, .card, .contact-grid');
-        fadeInElements.forEach(el => {
-            el.classList.add('fade-in');
-            observer.observe(el);
-        });
-
-        const style = document.createElement('style');
-        style.innerHTML = `
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .fade-in.in-view {
-            opacity: 1;
-            transform: translateY(0);
-        }`;
-        document.head.appendChild(style);
-
-        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            const navLinksAll = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            const contactForm = document.getElementById('contact-form');
+            const glow = document.getElementById('glow');
+            const subtitleElement = document.getElementById('hero-subtitle-typed');
+
+            // --- THEME TOGGLE (FIXED) ---
+            const applyTheme = (theme) => {
+                if (theme === 'light') {
+                    body.classList.add('light-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                } else {
+                    body.classList.remove('light-theme');
+                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                }
+            };
+
+            const toggleTheme = () => {
+                const newTheme = body.classList.contains('light-theme') ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            };
+
+            themeToggle.addEventListener('click', toggleTheme);
+
+            // Set initial theme
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme) {
+                applyTheme(savedTheme);
+            } else if (prefersDark) {
+                applyTheme('dark');
+            } else {
+                applyTheme('light'); // Default theme
+            }
+
+            // --- TYPING ANIMATION (NEW) ---
+            const typeWriter = (element, text, speed = 100) => {
+                let i = 0;
+                element.innerHTML = "";
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            };
+            
+            if (subtitleElement) {
+                typeWriter(subtitleElement, "Hi there, I'm");
+            }
+            
+            // --- Mobile menu toggle ---
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileToggle.innerHTML = navLinks.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            });
+            
+            navLinksAll.forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // --- Active nav link on scroll ---
+            window.addEventListener('scroll', () => {
+                let current = 'home';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 60) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                navLinksAll.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+            
+            // --- Glow effect ---
+            if (glow) {
+                document.addEventListener('mousemove', (e) => {
+                    glow.style.left = e.clientX + 'px';
+                    glow.style.top = e.clientY + 'px';
+                });
+            }
+            
+            // --- Form submission ---
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+
+            // --- FADE-IN ANIMATION on SCROLL ---
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            const fadeInElements = document.querySelectorAll('.hero-content, .section-title, .about-grid, .skills-grid, .card, .contact-grid');
+            fadeInElements.forEach(el => {
+                el.classList.add('fade-in');
+                observer.observe(el);
+            });
+
+            const style = document.createElement('style');
+            style.innerHTML = `
+            .fade-in {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .fade-in.in-view {
+                opacity: 1;
+                transform: translateY(0);
+            }`;
+            document.head.appendChild(style);
+
+            // --- Set current year in footer ---
             document.querySelector('.copyright p').innerHTML = 
-                &copy; ${new Date().getFullYear()} Ahnuf Mir. All rights reserved.;
+                `&copy; ${new Date().getFullYear()} Ahnuf Mir. All rights reserved.`;
         });
     </script>
 </body>
