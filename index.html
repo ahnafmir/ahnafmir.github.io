@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ahnuf Mir | Cybersecurity & AI Portfolio</title>
+    <meta name="description" content="Browse featured projects by Ahnuf Mir, a software engineering student specializing in Cybersecurity and AI.">
+    <meta name="keywords" content="Ahnuf Mir, Portfolio, Cybersecurity, AI, Software Engineering, Projects, C++, Python">
+    <meta name="author" content="Ahnuf Mir">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +25,7 @@
             --accent-orange: #FF6A00;
             --accent-orange-light: #FF8C42;
             --accent-orange-dark: #E05A00;
+            --accent-transparent-dark: rgba(255, 106, 0, 0.1);
             
             /* Light Theme Colors */
             --background-light: #f5f7fa;
@@ -28,6 +33,8 @@
             --surface-light-alt: #f0f2f5;
             --text-light: #1a1a1a;
             --text-secondary-light: #5a5a5a;
+            --accent-transparent-light: rgba(255, 106, 0, 0.1);
+
             
             /* Theme Variables */
             --background: var(--background-dark);
@@ -38,6 +45,7 @@
             --accent: var(--accent-orange);
             --accent-light: var(--accent-orange-light);
             --accent-dark: var(--accent-orange-dark);
+            --accent-transparent: var(--accent-transparent-dark);
             
             /* Spacing */
             --spacing-xs: 0.25rem;
@@ -81,6 +89,7 @@
             --surface-alt: var(--surface-light-alt);
             --text: var(--text-light);
             --text-secondary: var(--text-secondary-light);
+            --accent-transparent: var(--accent-transparent-light);
         }
 
         *,
@@ -268,6 +277,9 @@
             box-shadow: var(--shadow);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .card:hover {
@@ -554,7 +566,7 @@
             margin-bottom: var(--spacing-sm);
         }
 
-        /* Skills Section - NEW DESIGN */
+        /* Skills Section */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -562,7 +574,7 @@
         }
 
         .skills-category-title {
-            grid-column: 1 / -1; /* Span full width */
+            grid-column: 1 / -1;
             margin-bottom: var(--spacing-md);
             margin-top: var(--spacing-lg);
         }
@@ -606,70 +618,60 @@
             font-size: var(--text-sm);
         }
 
-
         /* Projects Section */
         .projects-grid {
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            display: grid;
+            gap: var(--spacing-lg);
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         }
 
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            height: 300px;
+        .projects-grid .card p {
+            flex-grow: 1;
         }
 
-        .project-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .project-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: var(--spacing-lg);
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            transform: translateY(100%);
-            transition: var(--transition);
-            color: white;
-        }
-
-        .project-card:hover .project-overlay {
-            transform: translateY(0);
-        }
-
-        .project-card:hover .project-image {
-            transform: scale(1.1);
-        }
-
-        .project-title {
-            font-size: var(--text-xl);
-            margin-bottom: var(--spacing-sm);
-            color: #fff;
-        }
-
-        .project-tags {
+        .projects-grid .card .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-md);
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .project-tag {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 2px 8px;
+        .projects-grid .card .tag {
+            background: var(--accent-transparent);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
             border-radius: var(--rounded-full);
             font-size: var(--text-sm);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        
+        .projects-grid .card .links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto; /* Pushes links to the bottom */
         }
 
-        .project-actions {
-            display: flex;
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-md);
+        .projects-grid .card .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .projects-grid .card .links a:hover {
+            color: var(--accent-light);
+            transform: translateX(5px);
+        }
+        
+        .projects-grid .card h3 {
+             color: var(--accent);
+             margin-bottom: var(--spacing-md);
         }
 
         /* Contact Section */
@@ -834,10 +836,9 @@
             .hero-title { font-size: var(--text-3xl); }
             .hero-description { font-size: var(--text-lg); }
             .section { padding: var(--spacing-xl) 0; }
-            .stat-card, .about-stats { grid-template-columns: 1fr; }
+            .about-stats, .skills-grid { grid-template-columns: 1fr; }
             .stat-card { padding: var(--spacing-md); }
-            .stat-number { font-size: var(--text-2xl); }
-            .about-stats { gap: var(--spacing-sm)}
+            .about-stats { grid-template-columns: 1fr; gap: var(--spacing-sm); }
         }
     </style>
 </head>
@@ -950,51 +951,54 @@
     <section class="section" id="projects">
         <div class="container">
             <div class="section-title">
-                <h2>My Projects</h2>
-                <p>Some of my recent work</p>
+                <h2>Featured Projects</h2>
+                <p>A selection of my work</p>
             </div>
             
-            <div class="projects-grid grid">
-                <div class="project-card card">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
-                    <div class="project-overlay">
-                        <h3 class="project-title">SecureAuth System</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Security</span>
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Authentication</span>
-                        </div>
-                        <p>Multi-factor authentication system with biometric verification</p>
-                        <div class="project-actions"><a href="#" class="btn">View Project</a></div>
+            <div class="projects-grid">
+                <div class="card">
+                    <h3>Gym Management System</h3>
+                    <div class="tags">
+                        <span class="tag"><i class="fab fa-html5"></i> HTML</span>
+                        <span class="tag"><i class="fab fa-css3-alt"></i> CSS</span>
+                        <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="tag"><i class="fas fa-database"></i> MySQL</span>
                     </div>
+                    <p>A dynamic web application for managing gym operations. It features member registration, class scheduling, and attendance tracking, all connected to a MySQL database for persistent data storage.</p>
+                    <div class="links"><a href="https://github.com/hvssanraza/Gym-Management-System--MYSQL-Connected-" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                 </div>
-                
-                <div class="project-card card">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
-                    <div class="project-overlay">
-                        <h3 class="project-title">Network Monitor</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Network</span>
-                            <span class="project-tag">Security</span>
-                            <span class="project-tag">Go</span>
-                        </div>
-                        <p>Real-time network traffic analyzer with threat detection</p>
-                        <div class="project-actions"><a href="#" class="btn">View Project</a></div>
+
+                <div class="card">
+                    <h3>Console-Based Gaming Suite</h3>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-code"></i> C++</span>
+                        <span class="tag"><i class="fas fa-object-group"></i> OOP</span>
+                        <span class="tag"><i class="fas fa-file-export"></i> File I/O</span>
                     </div>
+                    <p>A comprehensive collection of classic games in C++. Features a secure user account system with persistent data storage, demonstrating strong command over OOP and efficient file handling.</p>
+                    <div class="links"><a href="https://github.com/hvssanraza/Console-Based-Gaming-Suite" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                 </div>
-                
-                <div class="project-card card">
-                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Project" class="project-image">
-                    <div class="project-overlay">
-                        <h3 class="project-title">Encrypted Messenger</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Encryption</span>
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                        </div>
-                        <p>End-to-end encrypted messaging platform</p>
-                        <div class="project-actions"><a href="#" class="btn">View Project</a></div>
+
+                <div class="card">
+                    <h3>E-Commerce Store Simulation</h3>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-code"></i> C++</span>
+                        <span class="tag"><i class="fas fa-layer-group"></i> Data Structures</span>
+                        <span class="tag"><i class="fas fa-boxes"></i> Inventory Mngmt</span>
                     </div>
+                    <p>A complete e-commerce platform simulation with customer and admin roles. Includes product management, shopping cart, order processing, and robust data persistence for a fluid user experience.</p>
+                    <div class="links"><a href="https://github.com/hvssanraza/ECommerceStore" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
+                </div>
+
+                <div class="card">
+                    <h3>My Personal Portfolio</h3>
+                    <div class="tags">
+                        <span class="tag"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="tag"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                    </div>
+                    <p>The site you are on right now. A fully responsive website built with semantic HTML, modern CSS, and vanilla JavaScript to showcase my skills and projects.</p>
+                    <div class="links"><a href="https://github.com/ahnufmir/portfolio" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View Code</a></div>
                 </div>
             </div>
         </div>
@@ -1159,7 +1163,7 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('.copyright p').innerHTML = 
-                `&copy; ${new Date().getFullYear()} Ahnuf Mir. All rights reserved.`;
+                &copy; ${new Date().getFullYear()} Ahnuf Mir. All rights reserved.;
         });
     </script>
 </body>
